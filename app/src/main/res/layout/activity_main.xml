@@ -9,17 +9,28 @@
     tools:context=".MainActivity"
     tools:deviceIds="wear">
 
-    <FrameLayout
-        android:layout_width="match_parent"
+    <LinearLayout
+        android:id="@+id/layout"
         android:layout_height="match_parent"
-        android:padding="@dimen/inner_frame_layout_padding"
-        app:boxedEdges="all">
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:gravity="center">
 
         <TextView
-            android:id="@+id/text"
+            android:textColor="@color/dark_red"
+            android:id="@+id/steps"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/hello_world" />
+            android:text="0"
+            android:textSize="48dp"/>
 
-    </FrameLayout>
+        <TextView
+            android:textColor="@color/white"
+            android:id="@+id/rate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Steps per second: 0"
+            android:textSize="18dp"/>
+
+    </LinearLayout>
 </androidx.wear.widget.BoxInsetLayout>
