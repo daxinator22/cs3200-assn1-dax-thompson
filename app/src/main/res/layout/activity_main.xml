@@ -21,16 +21,8 @@
             android:id="@+id/steps"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="0"
+            android:text="Steps: 0"
             android:textSize="48dp"/>
-
-        <TextView
-            android:textColor="@color/white"
-            android:id="@+id/rate"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Steps per second: 0"
-            android:textSize="18dp"/>
 
     </LinearLayout>
 </androidx.wear.widget.BoxInsetLayout>

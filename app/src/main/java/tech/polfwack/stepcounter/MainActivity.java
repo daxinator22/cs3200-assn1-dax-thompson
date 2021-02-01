@@ -22,22 +22,18 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         final TextView steps = findViewById(R.id.steps);
-        final TextView rate = findViewById(R.id.rate);
 
         LinearLayout layout = findViewById(R.id.layout);
         layout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 stepCount = 0;
-                steps.setText("0");
-                rate.setText("BPM: 0" );
+                steps.setText(String.format("Steps: %d", stepCount));
             }
         });
 
         SensorManager sensorManager = (SensorManager)getSystemService(Context.SENSOR_SERVICE);
         Sensor accel = sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
-        final Sensor heartRateSensor = sensorManager.getDefaultSensor(Sensor.TYPE_HEART_RATE);
-
         sensorManager.registerListener(
                 new SensorEventListener() {
 
@@ -58,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
                             }
                             else{
                                 stepCount++;
-                                steps.setText("" + stepCount);
+                                steps.setText(String.format("Steps: %d", stepCount));
                                 lastStepTimeStamp = now;
                             }
                         }
@@ -70,23 +66,6 @@ public class MainActivity extends AppCompatActivity {
                     }
                 },
                 accel,
-                SensorManager.SENSOR_DELAY_UI);
-
-        sensorManager.registerListener(
-                new SensorEventListener() {
-                    @Override
-                    public void onSensorChanged(SensorEvent sensorEvent) {
-                        double heartRate = sensorEvent.values[0];
-                        rate.setText("BPM: " + heartRate);
-                    }
-
-                    @Override
-                    public void onAccuracyChanged(Sensor sensor, int i) {
-
-                    }
-                },
-
-                heartRateSensor,
                 SensorManager.SENSOR_DELAY_UI);
         
     }
